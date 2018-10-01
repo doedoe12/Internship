@@ -5,10 +5,15 @@ Tạo 1 file .md rồi sử dụng các công cụ để edit file như notepad+
 Những thứ tôi hay dùng nhất:
 
 [1. Thẻ tiêu đề](#title)
+
 [2. Chèn link, chèn ảnh](#chenlink)
+
 [3. Ký tự in đậm, in nghiêng](#boldnitalic)
+
 [4. Highlight chữ, đoạn văn bản](#highlight)
+
 [5. Gạch đầu dòng](#gachdaudong)
+
 [6. Tạo bảng](#taobang)
 
 ==========================================================
