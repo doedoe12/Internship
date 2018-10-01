@@ -1,5 +1,6 @@
 # Ngôn ngữ Markdown
 Ngôn ngữ Markdown chủ yếu được tôi sử dụng để ghi chép lại quá trình nghiên cứu của mình, do đó sẽ không sử dụng những thứ nâng cao mà chỉ tập trung vào những cái cơ bản hay sử dụng
+
 Tạo 1 file .md rồi sử dụng các công cụ để edit file như notepad++,...
 Những thứ tôi hay dùng nhất:
 
