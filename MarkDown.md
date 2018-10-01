@@ -90,10 +90,10 @@ Kết quả: `đoạn cần highlight`
 
 - Để highlight 1 đoạn ta làm như sau 
 ```sh
-```sh
+(```sh
 đoạn này cần phải highlight
 để nhìn cho nổi bật
-```
+```)
 ```
 
 Kết quả:
@@ -109,14 +109,14 @@ Kết quả:
 ```sh
 - Gạch đầu dòng 1
 <ul>
-<li>Lùi so với đầu dòng 1</li>
+<li> Lùi so với đầu dòng 1 </li>
 </ul>
 ```
 
 Kết quả:
 - Gạch đầu dòng 1
 <ul>
-<li> Lùi so với đầu dòng 1</li>
+<li> Lùi so với đầu dòng 1 </li>
 </ul>
 
 <a name="taobang"></a>
@@ -124,15 +124,15 @@ Kết quả:
 
 Để tạo bảng dùng cú pháp:
 ```sh
-|| Cột 2 | Cột 3| Cột 4|
-|Hàng 2| 1| 2| 3|
-|Hàng 3| 3| 2| 1|
+| | Cột 2 | Cột 3 | Cột 4 |
+| Hàng 2 | 1 | 2 | 3 |
+| Hàng 3 | 3 | 2 | 1 |
 ```
 
 Kết quả:
-|| Cột 2 | Cột 3| Cột 4|
-|Hàng 2| 1| 2| 3|
-|Hàng 3| 3| 2| 1|
+| | Cột 2 | Cột 3 | Cột 4 |
+| Hàng 2 | 1 | 2 | 3 |
+| Hàng 3 | 3 | 2 | 1 |
 
 
 
