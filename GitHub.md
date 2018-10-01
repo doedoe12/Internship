@@ -12,7 +12,7 @@
 ### 1. Tạo tài khoản GitHub, tạo Repository   
 - Tạo tài khoản GitHub  
 Để tạo tài khoản GitHub, truy cập trang chủ GitHub `https://github.com`  
-<img src="https://imgur.com/FZ3uMlD">  
+[Imgur](https://i.imgur.com/7RmZrWC.jpg)  
 Nhập **username**, **email**, **password** muốn sử dụng cho GitHub rồi nhấn `Sign up for GitHub`. Làm theo hướng dẫn rồi vào email để kích hoạt tài khoản  
 
 - Tạo Repository  
