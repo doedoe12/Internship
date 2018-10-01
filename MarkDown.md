@@ -18,7 +18,7 @@ Markdown sử dụng kí tự # để bắt đầu 1 thẻ tiêu đề, có th�
 
 Ví dụ:
 
-```sh
+```
 #1.Tiêu đề cấp 1
 ##2. Tiêu đề cấp 2
 ...
@@ -27,7 +27,7 @@ Ví dụ:
 
 Kết quả:
 
-```sh
+```
 # 1.Tiêu đề cấp 1
 ## 2.Tiêu đề cấp 2
 ...
@@ -40,7 +40,7 @@ Kết quả:
 - Để chèn 1 hyperlink vào file .md bạn chỉ cần copy link và paste trực tiếp vào file 
 
 Ví dụ: 
-```sh
+```
 `https://github.com`
 ```
 
@@ -48,14 +48,14 @@ Kết quả:
 https://github.com
 
 - Hoặc có thể rút ngắn đường dẫn bằng cú pháp
-```sh
+```
 `[GitHub](https://github.com)`
 ```
 Kết quả:
 [GitHub](https://github.com)
 
 - Để chèn ảnh sử dụng cú pháp
-```sh
+```
 `<img src="link_anh">`
 ```
 Cách tôi thường sử dụng đó là đẩy hết ảnh vào một folder rồi đẩy lên GitHub sau đó lấy đường dẫn ảnh đó đưa vào file, làm vậy sẽ giảm nguy cơ bị lỗi đường dẫn ảnh.
@@ -63,7 +63,7 @@ Cách tôi thường sử dụng đó là đẩy hết ảnh vào một folder r
 <a name="boldnitalic"></a>
 ## 3. Ký tự in đậm, in nghiêng
 - Để in đậm 1 đoạn text ta như sau:
-```sh
+```
 **từ cần in đậm**
 ```
 
@@ -71,7 +71,7 @@ Kết quả:
 **từ cần in đậm**
 
 - Để in nghiêng 1 đoạn text làm như sau:
-```sh
+```
 *từ cần in nghiêng*
 ```
 
@@ -82,22 +82,22 @@ Kết quả:
 ## 4. Highlight chữ, đoạn văn bản
 - Để highlight 1 dòng text ta làm như sau:
 
-```sh
+```
 `đoạn cần highlight`
 ```
 
 Kết quả: `đoạn cần highlight`
 
 - Để highlight 1 đoạn ta làm như sau 
-```sh
-(```sh
-đoạn này cần phải highlight
-để nhìn cho nổi bật
-```)
-```
+
+	```
+	đoạn này cần phải highlight
+	để nhìn cho nổi bật
+	```
+
 
 Kết quả:
-```sh
+```
 đoạn này cần phải highlight
 để nhìn cho nổi bật 
 ```
@@ -106,7 +106,7 @@ Kết quả:
 ## 5. Gạch đầu dòng
 
 Để sử dụng gạch đầu dòng chỉ cần dùng cú pháp:
-```sh
+```
 - Gạch đầu dòng 1
 <ul>
 <li> Lùi so với đầu dòng 1 </li>
@@ -123,7 +123,7 @@ Kết quả:
 ## 6. Tạo bảng
 
 Để tạo bảng dùng cú pháp:
-```sh
+```
 | | Cột 2 | Cột 3 | Cột 4 |
 | Hàng 2 | 1 | 2 | 3 |
 | Hàng 3 | 3 | 2 | 1 |
