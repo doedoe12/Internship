@@ -109,30 +109,30 @@ Kết quả:
 ```
 - Gạch đầu dòng 1
 <ul>
-<li>Lùi so với đầu dòng 1</li>
-</ul>
+	<li>Lùi so với đầu dòng 1</li>
+	</ul>
 ```
 
 Kết quả:
 - Gạch đầu dòng 1
-<ul>
-<li>Lùi so với đầu dòng 1</li>
-</ul>
+	<ul>
+	<li>Lùi so với đầu dòng 1</li>
+	</ul>
 
 <a name="taobang"></a>
 ## 6. Tạo bảng
 
 Để tạo bảng dùng cú pháp:
 ```
-| | Cột 2 | Cột 3 | Cột 4 |
-|-|-------|-------|-------|
+| Cột 1 Hàng 1 | Cột 2 | Cột 3 | Cột 4 |
+|--------------|-------|-------|-------|
 | Hàng 2 | 1 | 2 | 3 |
 | Hàng 3 | 3 | 2 | 1 |
 ```
 
 Kết quả:
-| | Cột 2 | Cột 3 | Cột 4 |
-|-|-------|-------|-------|
+| Cột 1 Hàng 1 | Cột 2 | Cột 3 | Cột 4 |
+|--------------|-------|-------|-------|
 | Hàng 2 | 1 | 2 | 3 |
 | Hàng 3 | 3 | 2 | 1 |
 
