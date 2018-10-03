@@ -1,7 +1,7 @@
 ## VMWare Workstation
 ### Mục lục
 
-[1. Tồng quan](#tongquan)
+[1. Tổng quan](#tongquan)
 
 [2. Cài đặt VMWare Workstation](#caidatvmware)
 
