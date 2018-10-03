@@ -25,37 +25,36 @@
 
 **Các tính năng mới**
 - Các hệ điều hành mới được hỗ trợ:
-
-<ul>
-<li>Windows 10 1803</li>
-<li>Ubuntu 18.04</li>
-<li>Fedora 28</li>
-<li>RHEL 7.5</li>
-<li>CentOS 7.5</li>
-<li>Debian 9.5</li>
-<li>OpenSuse Leap 15.0</li>
-<li>FreeBSD 11.2</li>
-<li>ESXi 6.7</li>
-</ul>
+	<ul>
+	<li>Windows 10 1803</li>
+	<li>Ubuntu 18.04</li>
+	<li>Fedora 28</li>
+	<li>RHEL 7.5</li>
+	<li>CentOS 7.5</li>
+	<li>Debian 9.5</li>
+	<li>OpenSuse Leap 15.0</li>
+	<li>FreeBSD 11.2</li>
+	<li>ESXi 6.7</li>
+	</ul>
 
 - Hỗ trợ DirectX 10.1
 DirectX 10.1 là sự nâng cấp của DirectX 10.0. Nó cung cấp chất lượng hình ảnh cao hơn nhờ công nghệ khử răng cưa MSAA. DirectX 10.1 hỗ trợ Shader Model 4.1 và Cubermap Array
 
 - Hardware version 16
 
-<ul>
-<li>Hỗ trợ DirectX 10.1</li>
-<li>Hỗ trợ bộ nhớ đồ hoạ lên tới 3GB</li>
-</ul>
+	<ul>
+	<li>Hỗ trợ DirectX 10.1</li>
+	<li>Hỗ trợ bộ nhớ đồ hoạ lên tới 3GB</li>
+	</ul>
 
 - REST API
 Có thể sử dụng Workstation RESTful API để tự động hoá các tác vụ thông thường của máy ảo bằng chuẩn JSON qua HTTP hoặc HTTPS. Các hoạt động được hỗ trợ bao gồm:
 
-<ul>
-<li>Virtual machine inventory management</li>
-<li>Virtual machine power management</li>
-<li>Networking management</li>
-</ul>
+	<ul>
+	<li>Virtual machine inventory management</li>
+	<li>Virtual machine power management</li>
+	<li>Networking management</li>
+	</ul>
 
 - Hỗ trợ VCSA 6.7
 Có thể import và sử dụng VCSA 6.7(vCenter Server Appliance) trong VMWare Workstation 15
@@ -95,26 +94,26 @@ VMWare có 3 chế độ card mạng:
 - Host-only
 ```
 
-- Bridged
+- Bridged  
 
-<ul>
-<li>Card mạng của máy ảo sẽ được gắn trực tiếp với card mạng của máy thật (sử dụng switch ảo VMnet0). Lúc này, máy ảo sẽ đóng vai trò như một máy trong mạng thật, có thể nhận DHCP từ mạng ngoài, hoặc đặt IP tĩnh cùng dải với mạng ngoài để giao tiếp với các máy ngoài mạng hoặc lên Internet.</li>
-</ul>
+	<ul>
+	<li>Card mạng của máy ảo sẽ được gắn trực tiếp với card mạng của máy thật (sử dụng switch ảo VMnet0). Lúc này, máy ảo sẽ đóng vai trò như một máy trong mạng thật, có thể nhận DHCP từ mạng ngoài, hoặc đặt IP tĩnh cùng dải với mạng ngoài để giao tiếp với các máy ngoài mạng hoặc lên Internet.</li>
+	</ul>
 
 - NAT (Network Address Translation)
 
-<ul>
-<li>Máy ảo sẽ được cấu hình NAT và sử dụng IP của máy thật để giao tiếp với mạng ngoài</li>
-<li>Các máy ảo được cấp địa chỉ IP nhờ một DHCP ảo của VMWare</li>
-<li>Các máy ảo sẽ kết nối với máy thật qua switch ảo VMnet8, và máy thật sẽ đóng vai trò NAT server cho các máy ảo.</li>
-</ul>
+	<ul>
+	<li>Máy ảo sẽ được cấu hình NAT và sử dụng IP của máy thật để giao tiếp với mạng ngoài</li>
+	<li>Các máy ảo được cấp địa chỉ IP nhờ một DHCP ảo của VMWare</li>
+	<li>Các máy ảo sẽ kết nối với máy thật qua switch ảo VMnet8, và máy thật sẽ đóng vai trò NAT server cho các máy ảo.</li>
+	</ul>
 
 - Host-only
 
-<ul>
-<li>Máy ảo sẽ kết nối với máy thật trong một mạng riêng thông qua switch ảo VMnet1 và không thể kết nối ra mạng ngoài</li>
-<li>Địa chỉ của máy ảo và máy thật trong mạng host-only có thể được cấp bới DHCP của switch ảo VMnet1 hoặc đặt IP tĩnh cùng dải để kết nối với nhau</li>
-</ul>
+	<ul>
+	<li>Máy ảo sẽ kết nối với máy thật trong một mạng riêng thông qua switch ảo VMnet1 và không thể kết nối ra mạng ngoài</li>
+	<li>Địa chỉ của máy ảo và máy thật trong mạng host-only có thể được cấp bới DHCP của switch ảo VMnet1 hoặc đặt IP tĩnh cùng dải để kết nối với nhau</li>
+	</ul>
 
 <a name="taomayao"></a>
 ### 4. Tạo máy ảo
@@ -137,11 +136,11 @@ VMWare có 3 chế độ card mạng:
 
 - Có 3 tuỳ chọn:
 
-<ul>
-<li>`Installer disc`: Cài đặt từ ổ đĩa</li>
-<li>`Installer disc image file`: Cài đặt từ file .iso, cần download bản iso của hệ điều hành muốn cài về trước</li>
-<li>`I will install the operating system later`: Tạo máy ảo với ổ đĩa trống</li>
-</ul>
+	<ul>
+	<li>Installer disc: Cài đặt từ ổ đĩa</li>
+	<li>Installer disc image file: Cài đặt từ file .iso, cần download bản iso của hệ điều hành muốn cài về trước</li>
+	<li>I will install the operating system later: Tạo máy ảo với ổ đĩa trống</li>
+	</ul>
 Chọn `Next` để tiếp tục
 
 <img src="https://github.com/doedoe12/Internship/blob/master/image/vmw5.jpg">
@@ -173,22 +172,22 @@ Tuỳ chọn `BusLogic` không khả dụng cho OS 64-bit. `LSI Logic` có giao 
 
 - Chọn định dạng ổ đĩa
 
-<ul>
-<li>Có thể chọn `IDE` disk cho bất kì hệ thống nào</li>
-<li>Có thể chọn `SCSI` disk cho bất kì hệ thống nào có driver cho LSI Logic hoặc BusLogic SCSI controller có sẵn trong máy ảo.</li>
-<li>Có thể chọn `SATA` disk cho một vài hệ thống</li>
-<li>Có thể chọn `NVMe` cho hệ thống support loại NVMe disk</li>
-</ul>
+	<ul>
+	<li>Có thể chọn `IDE` disk cho bất kì hệ thống nào</li>
+	<li>Có thể chọn `SCSI` disk cho bất kì hệ thống nào có driver cho LSI Logic hoặc BusLogic SCSI controller có sẵn trong máy ảo.</li>
+	<li>Có thể chọn `SATA` disk cho một vài hệ thống</li>
+	<li>Có thể chọn `NVMe` cho hệ thống support loại NVMe disk</li>
+	</ul>
 
 <img src="https://github.com/doedoe12/Internship/blob/master/image/vmw12.jpg">
 
 - Chọn ổ đĩa
 
-<ul>
-<li>`Create a new virtual disk`: Tạo một ổ đĩa mới</li>
-<li>`Use an existing virtual disk`: Sử dụng ổ đã tồn tại</li>
-<li>`Use a physical disk`: Sử dụng ổ đĩa thật</li>
-<ul>
+	<ul>
+	<li>Create a new virtual disk: Tạo một ổ đĩa mới</li>
+	<li>Use an existing virtual disk: Sử dụng ổ đã tồn tại</li>
+	<li>Use a physical disk: Sử dụng ổ đĩa thật</li>
+	<ul>
 Chọn tạo ổ mới.
 
 <img src="https://github.com/doedoe12/Internship/blob/master/image/vmw13.jpg">
