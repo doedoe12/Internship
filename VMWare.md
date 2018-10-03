@@ -5,7 +5,7 @@
 
 [2. Cài đặt VMWare Workstation](#caidatvmware)
 
-[3. Các chế độ cark mạng của VMWare](#cacchedocardmang)
+[3. Các chế độ card mạng của VMWare](#cacchedocardmang)
 
 [4. Tạo máy ảo](#taomayao)
 
