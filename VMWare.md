@@ -38,6 +38,7 @@
 	</ul>
 
 - Hỗ trợ DirectX 10.1
+
 DirectX 10.1 là sự nâng cấp của DirectX 10.0. Nó cung cấp chất lượng hình ảnh cao hơn nhờ công nghệ khử răng cưa MSAA. DirectX 10.1 hỗ trợ Shader Model 4.1 và Cubermap Array
 
 - Hardware version 16
@@ -48,6 +49,7 @@ DirectX 10.1 là sự nâng cấp của DirectX 10.0. Nó cung cấp chất lư�
 	</ul>
 
 - REST API
+
 Có thể sử dụng Workstation RESTful API để tự động hoá các tác vụ thông thường của máy ảo bằng chuẩn JSON qua HTTP hoặc HTTPS. Các hoạt động được hỗ trợ bao gồm:
 
 	<ul>
@@ -57,9 +59,11 @@ Có thể sử dụng Workstation RESTful API để tự động hoá các tác 
 	</ul>
 
 - Hỗ trợ VCSA 6.7
+
 Có thể import và sử dụng VCSA 6.7(vCenter Server Appliance) trong VMWare Workstation 15
 
 - Kết nối USB tự động tới máy ảo
+
 Các thiết bị USB có thể kết nối tự động đến một máy ảo đang bật nếu Workstation 15 được cấu hình để ghi nhớ connection rule.
 Đây là tính năng chỉ dành cho Windows host
 
@@ -75,7 +79,7 @@ Các thiết bị USB có thể kết nối tự động đến một máy ảo 
 <ul>
 <li>Intel Atom sử dụng kiến trúc Bonnell (Ví dụ: Atom Z670/Z650; Atom N570)</li>
 <li>Intel Atom sử dụng kiến trúc Saltwell (Ví dụ: Atom S1200, Atom D2700/D2500)</li>
-<li>AMD Llano và AMD Bobcat</li>
+<li>AMD Llano và AMD Bobcat</li>  
 
 #### Cài đặt
 
@@ -118,19 +122,19 @@ VMWare có 3 chế độ card mạng:
 <a name="taomayao"></a>
 ### 4. Tạo máy ảo
 
-- Giao diện VMWare 10
+- Giao diện VMWare 10  
 
 <img src="https://github.com/doedoe12/Internship/blob/master/image/VMW1.jpg">
 
-- Chọn `Create a New Virtual Machine`
+- Chọn `Create a New Virtual Machine`  
 
 <img src="https://github.com/doedoe12/Internship/blob/master/image/VMW2.jpg">
 
-- Chọn `Typical` để tạo theo mặc định, `Custom` để tuỳ chỉnh.
+- Chọn `Typical` để tạo theo mặc định, `Custom` để tuỳ chỉnh.  
 
 <img src="https://github.com/doedoe12/Internship/blob/master/image/VMW3.jpg">
 
-- Chọn phiên bản Workstation tại `Hardware` và xem các sản phẩm tương thích tại `Compatible products`, các thông số giới hạn tại `Limitations`. Chọn `Next` để tiếp tục quá trình.
+- Chọn phiên bản Workstation tại `Hardware` và xem các sản phẩm tương thích tại `Compatible products`, các thông số giới hạn tại `Limitations`. Chọn `Next` để tiếp tục quá trình.  
 
 <img src="https://github.com/doedoe12/Internship/blob/master/image/VMW4.jpg">
 
@@ -141,63 +145,66 @@ VMWare có 3 chế độ card mạng:
 	<li>Installer disc image file: Cài đặt từ file .iso, cần download bản iso của hệ điều hành muốn cài về trước</li>
 	<li>I will install the operating system later: Tạo máy ảo với ổ đĩa trống</li>
 	</ul>
-Chọn `Next` để tiếp tục
+	
+Chọn `Next` để tiếp tục  
 
 <img src="https://github.com/doedoe12/Internship/blob/master/image/vmw5.jpg">
 
-- Điền **Full name**, **user name**, **password**
+- Điền **Full name**, **user name**, **password**  
 
 <img src="https://github.com/doedoe12/Internship/blob/master/image/vmw6.jpg">
 
-- Điền tên máy và chọn nơi lưu máy
+- Điền tên máy và chọn nơi lưu máy  
 
 <img src="https://github.com/doedoe12/Internship/blob/master/image/vmw7.jpg">
 
-- Lựa chọn số processors và số nhân cho mỗi processors
+- Lựa chọn số processors và số nhân cho mỗi processors  
 
 <img src="https://github.com/doedoe12/Internship/blob/master/image/vmw8.jpg">
 
-- Chọn kích thước RAM.
+- Chọn kích thước RAM.  
 
 <img src="https://github.com/doedoe12/Internship/blob/master/image/vmw9.jpg">
 
-- Chọn card mạng phù hợp
+- Chọn card mạng phù hợp  
 
 <img src="https://github.com/doedoe12/Internship/blob/master/image/vmw10.jpg">
 
-- Chọn I/O Controller Types
-Tuỳ chọn `BusLogic` không khả dụng cho OS 64-bit. `LSI Logic` có giao diện song song và `LSI Logic SAS` có giao diện nối tiếp. Mặc định chọn LSI Logic.
+- Chọn I/O Controller Types  
+
+Tuỳ chọn `BusLogic` không khả dụng cho OS 64-bit. `LSI Logic` có giao diện song song và `LSI Logic SAS` có giao diện nối tiếp. Mặc định chọn LSI Logic.  
 
 <img src="https://github.com/doedoe12/Internship/blob/master/image/vmw11.jpg">
 
-- Chọn định dạng ổ đĩa
+- Chọn định dạng ổ đĩa  
 
 	<ul>
 	<li>Có thể chọn `IDE` disk cho bất kì hệ thống nào</li>
 	<li>Có thể chọn `SCSI` disk cho bất kì hệ thống nào có driver cho LSI Logic hoặc BusLogic SCSI controller có sẵn trong máy ảo.</li>
 	<li>Có thể chọn `SATA` disk cho một vài hệ thống</li>
 	<li>Có thể chọn `NVMe` cho hệ thống support loại NVMe disk</li>
-	</ul>
+	</ul>  
 
 <img src="https://github.com/doedoe12/Internship/blob/master/image/vmw12.jpg">
 
-- Chọn ổ đĩa
+- Chọn ổ đĩa  
 
 	<ul>
 	<li>Create a new virtual disk: Tạo một ổ đĩa mới</li>
 	<li>Use an existing virtual disk: Sử dụng ổ đã tồn tại</li>
 	<li>Use a physical disk: Sử dụng ổ đĩa thật</li>
 	<ul>
-Chọn tạo ổ mới.
+	
+Chọn tạo ổ mới.  
 
 <img src="https://github.com/doedoe12/Internship/blob/master/image/vmw13.jpg">
 
-- Chọn dung lượng tối đa của ổ cứng
-Tích vào `Allocate all disk space now` để cấp phát lập tức dung lượng tối đa của ổ cứng ảo từ ổ cứng thật, nếu không tích thì dung lượng ổ cứng ảo sẽ tăng dần tuỳ vào lượng dữ liệu được thêm vào ổ cứng ảo. Chọn `Store virtual disk as a single file` để lưu ổ cứng vào 1 file, hoặc `Split virtual disk into multiple files` để chia ổ cứng thành nhiều file.
+- Chọn dung lượng tối đa của ổ cứng  
+Tích vào `Allocate all disk space now` để cấp phát lập tức dung lượng tối đa của ổ cứng ảo từ ổ cứng thật, nếu không tích thì dung lượng ổ cứng ảo sẽ tăng dần tuỳ vào lượng dữ liệu được thêm vào ổ cứng ảo. Chọn `Store virtual disk as a single file` để lưu ổ cứng vào 1 file, hoặc `Split virtual disk into multiple files` để chia ổ cứng thành nhiều file.  
 
 <img src="https://github.com/doedoe12/Internship/blob/master/image/vmw14.jpg">
 
-- Chọn nơi lưu ổ cứng
+- Chọn nơi lưu ổ cứng  
 
 <img src="https://github.com/doedoe12/Internship/blob/master/image/vmw15.jpg">
 
