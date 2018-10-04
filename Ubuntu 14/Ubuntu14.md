@@ -47,51 +47,51 @@ Không giống như Ubuntu Desktop, Ubuntu server không hỗ trợ các chươn
 
 * Chọn Install Ubuntu Server để bắt đầu cài đặt
 
-<img src="img/u2">
+<img src="img/u2.jpg">
 
 * Chọn ngôn ngữ
 
-<img src="img/u3">
+<img src="img/u3.jpg">
 
 * Chọn khu vực
 
-<img src="img/u4">
+<img src="img/u4.jpg">
 
-<img src="img/u5">
+<img src="img/u5.jpg">
 
-<img src="img/u6">
+<img src="img/u6.jpg">
 
-<img src="img/u7">
+<img src="img/u7.jpg">
 
 * Chọn ngôn ngữ nhập
 
-<img src="img/u8">
+<img src="img/u8.jpg">
 
-<img src="img/u9">
+<img src="img/u9.jpg">
 
-<img src="img/u10">
+<img src="img/u10.jpg">
 
 * Điền hostname rồi chọn `Continue` để tiếp tục
 
-<img src="img/u11">
+<img src="img/u11.jpg">
 
 * Tạo username và password
 
-<img src="img/u12">
+<img src="img/u12.jpg">
 
-<img src="img/u13">
+<img src="img/u13.jpg">
 
-<img src="img/u14">
+<img src="img/u14.jpg">
 
-<img src="img/u15">
+<img src="img/u15.jpg">
 
 * Mã hoá thư mục home, chọn `No` nếu không muốn
 
-<img src="img/u16">
+<img src="img/u16.jpg">
 
 * Chọn timezone
 
-<img src="img/u17">
+<img src="img/u17.jpg">
 
 * Phân vùng ổ cứng cho Ubuntu
 Ở đây có 4 sự lựa chọn
@@ -100,42 +100,42 @@ Không giống như Ubuntu Desktop, Ubuntu server không hỗ trợ các chươn
 	* `Guided - use entire disk and with set encrypted up LVM:` Giống với lựa chọn 2 nhưng sẽ cài đặt mã hóa ổ cứng để tăng tính bảo mật. 
 	* `Manual:` Phân vùng thủ công.
 	
-<img src="img/u18">
+<img src="img/u18.jpg">
 
-<img src="img/u19">
+<img src="img/u19.jpg">
 
-<img src="img/u20">
+<img src="img/u20.jpg">
 
-<img src="img/u21">
+<img src="img/u21.jpg">
 
-<img src="img/u22">
+<img src="img/u22.jpg">
 
-<img src="img/u23">
+<img src="img/u23.jpg">
 
 * Thiết lập proxy: có thể bỏ trống
 
-<img src="img/u24">
+<img src="img/u24.jpg">
 
 * Cấu hình update
 	* `No automatic update:` Không tự động cập nhật
 	* `Install security updates automatically`: Cho phép tự động cập nhật 
 	* `Manage system with Landscape`: Quản lý từ xa
 	
-<img src="img/u25">
+<img src="img/u25.jpg">
 
 * Cài đặt các phần mềm hỗ trợ, dùng phím `Space` để chọn
 
-<img src="img/u26">
+<img src="img/u26.jpg">
 
 * Cài đặt GRUB Bootloader 
 
-<img src="img/u27">
+<img src="img/u27.jpg">
 
 * Cài đặt thành công, chọn `Continue` để khởi động lại máy
 
-<img src="img/u28">
+<img src="img/u28.jpg">
 
 * Nhập username và password vừa tạo ở trên để đăng nhập vào máy 
 
-<img src="img/u29">
+<img src="img/u29.jpg">
 
