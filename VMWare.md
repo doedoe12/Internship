@@ -220,7 +220,7 @@ Tích vào `Allocate all disk space now` để cấp phát lập tức dung lư�
 
 **Để thay đổi dải IP của 1 card mạng ảo VMnet làm như sau:**
 
-<img src"image/vmw16.jpg">
+<img src="image/vmw16.jpg">
 
 * Chọn `Edit` -> `Virtual Network Editor`
 
