@@ -9,6 +9,8 @@
 
 [4. Tạo máy ảo](#taomayao)
 
+[5. Thay đổi dải IP của VMnet, cấu hình DHCP cho VMnet](#thaydoiip)
+
 <a name="tongquan"></a>
 ### 1. Tổng quan
 
@@ -211,5 +213,35 @@ Tích vào `Allocate all disk space now` để cấp phát lập tức dung lư�
 - Xem lại các thông số, nhấn `Back` hoặc `Customize Hardware` để chỉnh lại. Tích `Power on this virtual machine after creation` để khởi động máy ảo ngay sau khi cài đặt xong. Chọn `Finish` để hoàn tất quá trình tạo máy ảo.
 
 
+<a name="thaydoiip"></a>
+### 5. Thay đổi dải IP của VMnet, cấu hình DHCP cho VMnet
+
+#### 5.1 Thay đổi dải IP của VMnet
+
+**Để thay đổi dải IP của 1 card mạng ảo VMnet làm như sau:**
+
+<img src"image/vmw16.jpg">
+
+* Chọn `Edit` -> `Virtual Network Editor`
+
+<img src="image/vmw17.jpg">
+
+* Chọn card mạng muốn thay đổi dải IP, điền dải IP, subnet mask muốn thay đổi. Chọn `Apply` để lưu thay đổi.
+
+#### 5.2 Cấu hình DHCP cho VMnet
+
+**Để cấu hình DHCP cho card mạng ảo VMnet làm như sau:**
+
+<img src="image/vmw16.jpg">
+
+* Chọn `Edit` -> `Virtual Network Editor`
+
+<img src="image/vmw18.jpg">
+
+* Chọn card mạng cần cấu hình DHCP, Chọn `DHCP Setting`
+
+<img src="image/vmw19.jpg">
+
+* Điền khoảng IP mong muốn rồi chọn `OK`, chọn `Apply` để lưu thay đổi
 
 
