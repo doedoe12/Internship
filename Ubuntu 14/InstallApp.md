@@ -4,6 +4,12 @@
 
 Sử dụng lệnh `sudo apt-get install apache2` để cài đặt apache 
 
+#### Ưu nhược điểm
+
+- Ưu điểm: Việc cài đặt 1 chương trình rất dễ dàng, chỉ cần phải biết tên của chương trình đó, phù hợp với người mới bắt đầu.
+
+- Nhược điểm: Khả năng tuỳ biến, tích hợp bị hạn chế, có những chương trình bị thiếu module mà việc cài tự động không có.
+
 ### Cài đặt manual 
 
 - Download source từ trang chủ của application, ở đây là apache HTTP server 2.4.35 (http://httpd.apache.org/download.cgi)
@@ -56,3 +62,9 @@ make install
 	- Cài đặt thành công
 	
 <img src="img/09.jpg">
+
+#### Ưu nhược điểm
+
+- Ưu điểm: Khả năng tuỳ biến cao, do build từ source nên có đầy đủ các module cần thiết, bảo mật cao
+
+- Nhược điểm: Khó cài đặt đối với người mới sử dụng, phải tự tìm và cài đặt những gói phụ thuộc cần thiết cho việc cài đặt chương trình.
