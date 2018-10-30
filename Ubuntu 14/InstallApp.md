@@ -1,8 +1,8 @@
 ## Các cách để cài đặt 1 application trong Ubuntu ( Ví dụ Apache )
 
-### Cài đặt tự động bằng Repository 
+### Cài đặt tự động từ Repository
 
-Sử dụng lệnh `sudo apt-get install apache2` để cài đặt apache 
+Sử dụng lệnh `sudo apt-get install apache2` trên Ubuntu, `yum install apache2` trên CentOS để cài đặt apache 
 
 #### Ưu nhược điểm
 
@@ -10,7 +10,7 @@ Sử dụng lệnh `sudo apt-get install apache2` để cài đặt apache
 
 - Nhược điểm: Khả năng tuỳ biến, tích hợp bị hạn chế, có những chương trình bị thiếu module mà việc cài tự động không có.
 
-### Cài đặt manual 
+### Cài đặt bằng `make` 
 
 - Download source từ trang chủ của application, ở đây là apache HTTP server 2.4.35 (http://httpd.apache.org/download.cgi)
 
@@ -68,3 +68,21 @@ make install
 - Ưu điểm: Khả năng tuỳ biến cao, do build từ source nên có đầy đủ các module cần thiết, bảo mật cao
 
 - Nhược điểm: Khó cài đặt đối với người mới sử dụng, phải tự tìm và cài đặt những gói phụ thuộc cần thiết cho việc cài đặt chương trình.
+
+### Cài đặt từ file .deb .rpm
+
+- Nếu đã có sẵn file .deb trong máy, có thể cài đặt ứng dụng bằng lệnh:
+
+```
+sudo apt install ./file.deb
+```
+
+Sau khi thực hiện lệnh này thì các gói phụ thuộc cần để cài ứng dụng sẽ được tự động download về.
+
+- Đối với CentOS, nếu có sẵn file .rpm trong máy, có thể cài đặt bằng lệnh:
+
+```
+yum localinstall file.rpm 
+```
+
+Lệnh này sẽ cài đặt file.rpm đã có sẵn trên máy và cài đặt các gói phụ thuộc nếu cần.
