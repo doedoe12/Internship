@@ -2,10 +2,10 @@
 Cú pháp: 
 
 ```
-kill <signal> <pid>
+kill -<signal> <pid>
 ```
 
-Lệnh `kill` được dùng để chấm dứt một tiến trình. Để sử dụng lệnh `kill` bạn phải gửi kèm theo 1 tín hiệu như là 1 option của lệnh `kill`. Có tổng cộng khoảng 60 tín hiệu có thể sử dụng với lệnh `kill`, có thể dùng lệnh `kill -l` để xem danh sách các tín hiệu.
+Lệnh `kill` được dùng để chấm dứt một tiến trình. Khi sử dụng lệnh `kill` bạn có thể gửi kèm theo 1 tín hiệu như là 1 option của lệnh `kill`. Có tổng cộng khoảng 60 tín hiệu có thể sử dụng với lệnh `kill`, có thể dùng lệnh `kill -l` để xem danh sách các tín hiệu.
 
 <img src="img/23.jpg">
 
