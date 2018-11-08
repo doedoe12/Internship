@@ -108,17 +108,17 @@ apt-get install apt-cacher-ng
 
 <img src="img/05.jpg">
 
-	- Ở đây có các lựa chọn:
+- Ở đây có các lựa chọn:
 
-		- **Calculate and display download size**: Tính toán và hiển thị dung lượng tải về
+	- **Calculate and display download size**: Tính toán và hiển thị dung lượng tải về
 		
-		- **Download package file**: Tích vào sẽ tiến hành download về ngay, không tích thì chỉ liệt kê những gói có thể download về thôi.
+	- **Download package file**: Tích vào sẽ tiến hành download về ngay, không tích thì chỉ liệt kê những gói có thể download về thôi.
 		
-		- **Restrict to packages related to previously cached file**: Tuỳ chọn này để lọc các gói theo những gói đã có trong CacheDir.
+	- **Restrict to packages related to previously cached file**: Tuỳ chọn này để lọc các gói theo những gói đã có trong CacheDir.
 		
-		- **Don't update index files**: Tuỳ chọn cho phép không cập nhật các file index.
+	- **Don't update index files**: Tuỳ chọn cho phép không cập nhật các file index.
 		
-		- **Use Debdelta if possible (experimental)**: Tuỳ chọn sử dụng Debdelta để download ( Debdelta là ứng dụng giúp bạn so sánh sự khác nhau giữa gói cũ và phiên bản mới của gói đó, giúp tiết kiệm băng thông bằng cách chỉ tải về phần khác nhau đó)
+	- **Use Debdelta if possible (experimental)**: Tuỳ chọn sử dụng Debdelta để download ( Debdelta là ứng dụng giúp bạn so sánh sự khác nhau giữa gói cũ và phiên bản mới của gói đó, giúp tiết kiệm băng thông bằng cách chỉ tải về phần khác nhau đó)
 		
 - Sau khi lựa chọn xong các tuỳ chọn, chọn `Start Mirroring` để bắt đầu.
 
