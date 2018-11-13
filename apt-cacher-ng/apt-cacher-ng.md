@@ -116,11 +116,36 @@ apt-get install apt-cacher-ng
 		
 	- **Restrict to packages related to previously cached file**: Tuỳ chọn này để lọc các gói theo những gói đã có trong CacheDir.
 		
-	- **Don't update index files**: Tuỳ chọn cho phép không cập nhật các file index.
+	- **Don't update index files**: Tuỳ chọn cho phép không cập nhật các file index. (Mặc định khi nhấn Start Mirroring sẽ tự động cập nhật các file index của các gói).
 		
-	- **Use Debdelta if possible (experimental)**: Tuỳ chọn sử dụng Debdelta để download ( Debdelta là ứng dụng giúp bạn so sánh sự khác nhau giữa gói cũ và phiên bản mới của gói đó, giúp tiết kiệm băng thông bằng cách chỉ tải về phần khác nhau đó)
+	- **Use Debdelta if possible (experimental)**: Tuỳ chọn sử dụng Debdelta để download ( Debdelta là ứng dụng giúp bạn so sánh sự khác nhau giữa gói cũ và gói mới, giúp tiết kiệm băng thông bằng cách chỉ tải về phần khác nhau đó)
 		
 - Sau khi lựa chọn xong các tuỳ chọn, chọn `Start Mirroring` để bắt đầu.
 
+### Import 
+
+<img src="img/07.jpg">
+
+apt-cacher-ng có hỗ trợ chúng ta import các packages từ những nguồn khác. Để import ta chỉ cần copy các gói cài đặt có sẵn vào thư mục `/var/cache/apt-cacher-ng/_import` rồi quay lại Web UI và nhấn vào nút `Start Import` để import vào apt-cacher-ng.
+
+Lưu ý: Các gói được import phải có đường dẫn download xác định trong index file, để chắc chắn rằng trong cache server có file index, chạy lệnh `apt-get update` tại 1 client bất kì để download file index.
+
+Bạn cũng có thể import các gói cài đặt từ CD/DVD bằng cách mount nó vào thư mục `/var/cache/apt-cacher-ng/_import` rồi vào Web UI nhấn `Start Import`, sau khi import thành công thì có thể unmount.
+
 ### Loại bỏ phiên bản cũ đã lỗi thời của các gói cài đặt khỏi CacheDir
 
+Khi đã cập nhật các gói cài đặt mới, các gói cài đặt cũ có thể được xoá đi tự động hoặc thủ công.
+
+#### Manual
+
+Phần Expiration trên Web UI là nơi để bạn thực hiện việc Scan xem những package nào đã cũ hoặc bị hỏng để xoá chúng đi
+
+<img src="img/08.jpg">
+
+Nhấn `Start Scan and/or Expiration` để bắt đầu quá trình quét các gói đã cũ, có thể chọn tuỳ chọn `Purge unreferenced files immediately after scan` để xoá luôn các gói cũ sau khi Scan.
+
+Hoặc bạn có thể dùng các hành động trực tiếp ở dưới phần `Direct actions`.
+
+#### Automatic
+
+apt-cacher-ng cung cấp một cron task được đặt lịch chạy tự động, file đó là `/etc/cron.daily/apt-cacher-ng`. Tiến trình này tự động thực hiện những hành động giống như khi bạn thực hiện task Expiration thủ công mà thôi
