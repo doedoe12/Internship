@@ -100,7 +100,7 @@ apt-get install apt-cacher-ng
 
 ### Update phiên bản các gói cài đặt đã được cache
 
-- Giao diện web của apt-cacher-ng cho bạn 1 tính năng Mirroring, tính năng này sẽ dựa vào các file index của các gói cài đặt đã có trong CacheDir để tìm và tải phiên bản cập nhật mới nhất của các gói đó về CacheDir. Để có thể dùng tính năng này, trước hết phải cấu hình tại file `/etc/apt-cacher-ng/acng.conf`:
+- Giao diện web của apt-cacher-ng cho bạn 1 tính năng Mirroring, tính năng này sẽ dựa vào các file index (các file index được lưu tại `/var/lib/apt/lists`) của các gói cài đặt đã có trong CacheDir để tìm và tải phiên bản cập nhật mới nhất của các gói đó về CacheDir. Để có thể dùng tính năng này, trước hết phải cấu hình tại file `/etc/apt-cacher-ng/acng.conf`:
 
 `PrecacheFor: uburep/dists/trusty-updates/*/binary-amd64/Packages*`
 
