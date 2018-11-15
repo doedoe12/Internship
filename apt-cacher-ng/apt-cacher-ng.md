@@ -72,6 +72,32 @@ apt-get install apt-cacher-ng
 	
 	`PidFile: /var/run/apt-cacher-ng/pid`
 	
+	- Bỏ comment các dòng:
+	
+	`ExTreshold: 4`
+	
+	`VerboseLog: 1`
+	
+	- Sửa giá trị dòng DnsCacheSeconds
+	
+	`DnsCacheSeconds: 2000`
+	
+	- Để apt-cacher-ng cache cả packages cho CentOS thêm vào các dòng:
+	
+	```
+	VfilePattern: ^/\?release=[0-9]+&arch=
+	
+	VfilePatternEx: ^(/\?release=[0-9]+&arch=.*|.*/RPM-GPG-KEY-examplevendor)$
+	
+	Remap-centos: file:centos_mirrors /centos
+	```
+	
+	- Tạo mirror list bằng câu lệnh 
+	
+	`curl https://www.centos.org/download/full-mirrorlist.csv | sed 's/^.*"http:/http:/' | sed 's/".*$//' | grep ^http >/etc/apt-cacher-ng/centos_mirrors`
+	
+	- Thêm `PassThroughPattern: .*` vào file cấu hình
+	
 	- Khởi động lại dịch vụ apt-cacher:
 	
 	`service apt-cacher-ng restart`
@@ -82,9 +108,13 @@ apt-get install apt-cacher-ng
 
 ### Client 
 
-- Trên máy Client, tạo file `01proxy` trong thư mục `/etc/apt/apt.conf.d/` để client gửi các request tới proxy apt-cacher-ng server có nội dung như sau:
+- Trên máy Client Ubuntu, tạo file `01proxy` trong thư mục `/etc/apt/apt.conf.d/` để client gửi các request tới proxy apt-cacher-ng server có nội dung như sau:
 
 `Acquire::http { Proxy "http://10.10.10.2:3142"; };`
+
+- Trên client CentOS, dùng lệnh:
+
+`echo "proxy=http://10.10.10.2:3142" >> /etc/yum.conf`
 
 - Lưu lại là xong, bây giờ các máy client trong mạng LAN có thể cài đặt và cập nhật các gói phần mềm thông qua proxy apt-cacher-ng
 
