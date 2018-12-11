@@ -147,3 +147,89 @@ Trong đó `Snapshot 1` là tên của snapshot, `First Snapshot` là mô tả v
 - Để xoá một internal snapshot sử dụng câu lệnh `virsh snapshot-delete VMname Snapshotname`
 
 ### Tạo và quản lí External Snapshot
+
+#### Tạo snapshot 
+
+- Tiến hành kiểm tra ổ đĩa mà máy ảo muốn tạo snapshot đang sử dụng bằng câu lệnh `virsh domblklist VMname --details`
+
+<img src="img/31.jpg">
+
+- Tiến hành tạo snapshot bằng câu lệnh `virsh snapshot-create-as VMname snapshot1 "Description" --disk-only --atomic 
+
+<img src="img/32.jpg">
+
+Trong đó `--disk-only` dùng để tạo snapshot cho riêng ổ đĩa.
+
+- Check lại danh sách bằng câu lệnh `virsh snapshot-list VMname` 
+
+<img src="img/33.jpg">
+
+- Snapshot đã được tạo tuy nhiên nó chỉ lưu trữ duy nhất trạng thái ổ đĩa 
+
+<img src="img/34.jpg">
+
+- Kiểm tra lại ổ đĩa mà máy ảo đang sử dụng 
+
+<img src="img/35.jpg">
+
+Lúc này ổ đĩa cũ đã biến thành trạng thái `read-only`, VM dùng ổ đĩa mới để lưu dữ liệu và `backingfile` sẽ là ổ đĩa ban đầu. Xem thông tin của ổ đĩa này:
+
+<img src="img/36.jpg">
+
+#### Revert lại trạng thái snapshot
+
+- Để revert lại trạng thái của external snapshot, bạn phải cấu hình file XML bằng tay. Giả sử VM đang ở snapshot2 và muốn quay lại snapshot1:
+
+	- Lấy đường dẫn tới ổ đĩa được tạo ra khi snapshot
+	
+	<img src="img/37.jpg">
+	
+	- Kiểm tra để đảm bảo nó còn nguyên vẹn và được kết nối với backing file 
+	
+	<img src="img/38.jpg">
+	
+	- Chỉnh sửa bằng tay file XML, bỏ ổ đĩa hiện tại và thay thế bằng ổ đĩa ở trạng thái snapshot1
+	
+	<img src="img/63.jpg">
+	
+	- Kiểm tra lại xem máy ảo đã sử dụng đúng ổ chưa
+	
+	<img src="img/64.jpg">
+	
+	- Khởi động máy ảo và kiểm tra
+	
+#### Xoá external snapshot
+
+- Quy trình xoá một external snapshot khá phức tạp. Để có thể xoá, trước tiên bạn phải tiến hành hợp nhất nó với ổ đĩa cũ. Có hai kiểu hợp nhất đó là: 
+
+	- blockcommit: Hợp nhất dữ liệu với ổ đĩa cũ 
+	
+	- blockpull: Hợp nhất dữ liệu với ổ đĩa được tạo ra khi snapshot. Ổ đĩa sau khi hợp nhất sẽ luôn có định dạng qcow2.
+	
+- Hợp nhất sử dụng `blockcommit`:
+
+	- Kiểm tra ổ đĩa hiện tại mà máy ảo sử dụng bằng câu lệnh `virsh domblklist VM1`
+	
+	- Xem thông tin backing file của ổ đĩa đang được sử dụng bằng câu lệnh `qemu-img info --backing-chain /vmstore1/vm1.snap4 | grep backing`
+	
+	- Hợp nhất snapshot bằng câu lệnh `virsh blockcommit VM1 hda --verbose --pivot --active`. Lưu ý đối với Ubuntu, chỉ bản 16.04 mới hỗ trợ câu lệnh này.
+	
+	- Check lại ổ đĩa đang sử dụng bằng câu lệnh `virsh domblklist VM1` 
+	
+	- Kiểm tra lại danh sách các snapshot bằng câu lệnh `virsh snapshot-list VM1` 
+	
+	- Xoá snapshot bằng câu lệnh `virsh snapshot-delete VM1 snap1 --children --metadata`
+	
+- Hợp nhất sử dụng `blockpull`:
+
+	- Xem ổ đĩa hiện tại máy ảo đang sử dụng 
+	
+	<img src="img/65.jpg">
+	
+	- Xem backing file của VM 
+	
+	<img src="img/66.jpg">
+	
+	- Hợp nhất ổ đĩa cũ với ỗ đĩa snapshot bằng lệnh `virsh blockpull VMname --path snap/shot/path --wait --verbose`
+	
+	- Xoá bỏ base image và snapshot metadata bằng câu lệnh `virsh snapshot-delete VMname snapshotname --metadata`
