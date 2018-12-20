@@ -42,11 +42,11 @@ Lệnh `brctl show` hiển thị rằng có interface khác trên `kvmbr0` Linux
 
 Bây giờ, giống như bạn cắm dây mạng từ card vật lý vào một cổng (interface) trên một switch ảo, card mạng của máy ảo được kết nối tới `tap` interface ảo này trên Linux bridge. Hình dưới thể hiện quan hệ giữa card mạng ảo của máy ảo với Linux Bridge tap interface.
 
-	- Đầu tiên ta nhận thấy sự tương đồng giữa địa chỉ MAC của vnet0 (trên máy chủ) và eth0 (card mạng ảo trong máy ảo).
+- Đầu tiên ta nhận thấy sự tương đồng giữa địa chỉ MAC của vnet0 (trên máy chủ) và eth0 (card mạng ảo trong máy ảo).
 	
-	- Tiếp theo là dữ liệu được truyền và nhận trên từng interface. Đây là quan hệ 1-1 trực tiếp, TX bytes của card mạng máy ảo tương đồng với RX bytes của `vnet0` và ngược lại.
+- Tiếp theo là dữ liệu được truyền và nhận trên từng interface. Đây là quan hệ 1-1 trực tiếp, TX bytes của card mạng máy ảo tương đồng với RX bytes của `vnet0` và ngược lại.
 	
-	- Cuối cùng, ta có thể thấy rằng card mạng ảo đã được cấu hình với địa chỉ IP và gateway. Các cấu hình này được hoàn tất bằng DHCP server từ router vật lý. Điều này có nghĩa là card mạng ảo đã có kết nối external network.
+- Cuối cùng, ta có thể thấy rằng card mạng ảo đã được cấu hình với địa chỉ IP và gateway. Các cấu hình này được hoàn tất bằng DHCP server từ router vật lý. Điều này có nghĩa là card mạng ảo đã có kết nối external network.
 	
 <img src="img/05.jpg">
 	
