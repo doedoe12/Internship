@@ -90,3 +90,8 @@ virsh migrate generic qemu+tcp://10.10.10.9/system tcp://10.10.10.9
 - Kiểm tra lại trên host `10.10.10.9` thì thấy có máy ảo `generic` vẫn đang chạy:
 
 <img src="img/113.jpg">
+
+## Tham khảo
+
+https://github.com/Skyaknt/meditech-thuctap/blob/master/Songle/KVM/Live%20migrate%20tren%20KVM.md
+
