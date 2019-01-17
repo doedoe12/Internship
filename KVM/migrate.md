@@ -119,13 +119,15 @@ setenforce 0
 sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 ```
 
-- Sử dụng câu lệnh sau để migrate máy ảo `generic` từ host kvm1 sang host kvm2:
+- Sử dụng câu lệnh sau để migrate máy ảo `generic` từ host kvm2 sang host kvm1:
 
 ```
-virsh migrate --live generic qemu+ssh://10.10.10.9/system 
+virsh migrate --live generic qemu+ssh://10.10.10.6/system 
 ```
 
 - Nhập password của root host kvm2 và đợi
+
+<img src="img/114.jpg">
 
 - Kiểm tra lại trên 2 host bằng lệnh `virsh list`
 
