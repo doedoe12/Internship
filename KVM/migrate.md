@@ -99,7 +99,11 @@ virsh migrate generic qemu+tcp://10.10.10.9/system tcp://10.10.10.9
 10.10.10.9 kvm2 kvm2.localdomain
 ```
 
-Làm tương tự với host `kvm2`
+Làm với host `kvm2`:
+
+```
+10.10.10.6 kvm1 kvm1.localdomain
+```
 
 - Mở cổng 49152 trên firewall của cả 2 host:
 
