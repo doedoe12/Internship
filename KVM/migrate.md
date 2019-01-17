@@ -32,9 +32,9 @@ Migrate có 2 cơ chế:
 
 ## Chuẩn bị
 
-- 1 VM cài đặt KVM đã tạo 1 máy ảo, IP 10.10.10.6
+- host kvm1 cài đặt KVM đã tạo 1 máy ảo, IP 10.10.10.6 
 
-- 1 VM cài đặt KVM chưa tạo máy ảo để làm host đích, IP 10.10.10.9
+- host kvm2 cài đặt KVM chưa tạo máy ảo để làm host đích, IP 10.10.10.9
 
 - 1 Server NFS làm Share Storage cho 2 máy KVM, IP 10.10.10.5
 
@@ -90,6 +90,40 @@ virsh migrate generic qemu+tcp://10.10.10.9/system tcp://10.10.10.9
 - Kiểm tra lại trên host `10.10.10.9` thì thấy có máy ảo `generic` vẫn đang chạy:
 
 <img src="img/113.jpg">
+
+## Migrate bằng SSH
+
+- Đầu tiên sửa file `/etc/hosts` của host `kvm1`, thêm vào dòng sau:
+
+```
+10.10.10.9 kvm2 kvm2.localdomain
+```
+
+Làm tương tự với host `kvm2`
+
+- Mở cổng 49152 trên firewall của cả 2 host:
+
+```
+firewall-cmd --permanent --add-port=49152/tcp 
+firewall-cmd --reload
+```
+
+- Tắt SELinux trên cả 2 host:
+
+```
+setenforce 0
+sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
+```
+
+- Sử dụng câu lệnh sau để migrate máy ảo `generic` từ host kvm1 sang host kvm2:
+
+```
+virsh migrate --live generic qemu+ssh://10.10.10.9/system 
+```
+
+- Nhập password của root host kvm2 và đợi
+
+- Kiểm tra lại trên 2 host bằng lệnh `virsh list`
 
 ## Tham khảo
 
