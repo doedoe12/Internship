@@ -131,6 +131,20 @@ virsh migrate --live generic qemu+ssh://10.10.10.6/system
 
 - Kiểm tra lại trên 2 host bằng lệnh `virsh list`
 
+## Migrate Offline 
+
+Để Migrate Offline thì đầu tiên phải shutdown VM trước:
+
+```
+virsh shutdown generic
+```
+
+Sau khi đã shutdown VM, sử dụng câu lệnh sau để migrate máy ảo sang host 10.10.10.6:
+
+```
+virsh migrate --offline generic qemu+ssh://10.10.10.6/system 
+```
+
 ## Tham khảo
 
 https://github.com/Skyaknt/meditech-thuctap/blob/master/Songle/KVM/Live%20migrate%20tren%20KVM.md
