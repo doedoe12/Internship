@@ -44,8 +44,102 @@ Mỗi table được tạo với một số chains nhất định. Chains cho ph
 
 - POSTROUTING: Áp dụng cho các gói tin đi network interface. Chain này có trong 2 bảng Mangle và NAT.
 
+Hình mô tả thứ tự xử lý các table và các chain trong luồng xử lý gói tin
+
+<img src="img/01.jpg">
+
+### Target
+
+Target hiểu đơn giản là các hành động áp dụng cho các gói tin. Đối với những gói tin đúng theo rule mà chúng ta đặt ra thì các hành động (Target) có thể thực hiện được là:
+
+- ACCEPT: Chấp nhận gói tin, cho phép gói tin đi vào hệ thống 
+
+- DROP: Loại bỏ gói tin, không có gói tin trả lời, giống như là hệ thống không tồn tại.
+
+- REJECT: Loại bỏ gói tin nhưng có trả lời table gói tin khác, ví dụ trả lời table 1 gói tin "connection reset" đối với gói TCP hoặc bản tin "destination host unreachable" đối với gói UDP và ICMP.
+
+- LOG: Chấp nhận gói tin nhưng có ghi lại log.
+
+Gói tin sẽ đi qua tất cả các rule chứ không dừng lại khi đã đúng với 1 rule đặt ra. Đối với những gói tin không khớp với rule nào cả mặc định sẽ được chấp nhận.
+
+### Rule
+
+Cấu trúc 1 rule trong IPtables:
+
+```
+TARGET    PROT   OPT  IN   OUT   SOURCE     DESTINATION
+```
+
+- TARGET: Hành động sẽ thực thi
+
+- PROT: Viết tắt của protocol, giao thức sẽ được áp dụng cho rule này 
+
+- IN: Chỉ ra rule sẽ áp dụng cho các gói tin đi vào từ interface nào, ví dụ như lo, eth0,... hoặc **any** là áp dụng cho tất cả interface
+
+- OUT: Tương tự như IN, chỉ ra rule sẽ áp dụng cho các gói tin đi ra từ interface nào.
+
+- DESTINATION: Địa chỉ của lượt truy cấp được phép áp dụng quy tắc
+
+## Quá trình xử lý gói tin
+
+<img src="img/02.jpg">
+
+<img src="img/03.jpg">
+
+<img src="img/04.jpg">
+
+<img src="img/05.jpg">
+
+## Phân biệt Firewalld và IPtables
+
+Sự khác nhau chủ yếu giữa Firewalld và IPtables là:
+
+- IPtables lưu cấu hình tại file `/etc/sysconfig/iptables` trong khi đó Firewalld lưu cấu hình bằng các file XML trong thư mục `/usr/lib/firewalld/` và `/etc/firewalld/`. Lưu ý rằng file `/etc/sysconfig/iptables` không tồn tại như Firewalld được cài mặc định. 
+
+- Với IPtables, mọi thay đổi đồng nghĩa với việc xoá bỏ toàn bộ các rule cũ và đọc lại tất cả các rule mới từ file `/etc/sysconfig/iptables`. Trong khi đó với Firewalld, không có việc khởi tạo lại toàn bộ các rule, chỉ có các sự thay đổi được áp dụng. Vì thế, Firewalld có thể thay đổi cấu hình trong khi đang chạy mà không làm mất các kết nối hiện tại.
+
+## Các option và command cơ bản 
+
+### Options
+
+#### Các options để chỉ định thông số
+
+| Option | Description |
+|--------|-------------|
+| -t | Chỉ định tên table (nếu không chỉ định table, giá trị mặc định là filter table) |
+| -p | Chỉ định loại giao thức |
+| -i | Chỉ định card mạng vào |
+| -o | Chỉ định card mạng ra |
+| -s | Chỉ định địa chỉ IP nguồn |
+| -d | Chỉ định địa chỉ IP đích |
+| --sport | Chỉ định cổng nguồn |
+| --dport | Chỉ định cổng đích |
+
+#### Các option để thao tác với chain 
+
+| Option | Description |
+|--------|-------------|
+| -N | Tạo chain mới |
+| -X | Xoá hết các rule đã tạo trong chain |
+| -P | Đặt chính sách cho các chain built-in (INPUT, OUTPUT, FORWARD) |
+| -L | Liệt kê các rule có trong chain |
+| -F | Xoá các rule có trong chain |
+| -Z | Reset bộ đếm packet về 0 |
+
+#### Các option để thao tác với rule 
+
+| Option | Description |
+|--------|-------------|
+| -A | Thêm rule |
+| -D | Xoá rule |
+| -R | Thay thế rule |
+| -I | Chèn thêm rule |
+
+### Một số command cơ bản 
+
 
 
 ## Tham khảo
 
 https://tech.vccloud.vn/tim-hieu-ve-iptables-phan-1-660.htm
+https://github.com/thaonguyenvan/meditech-thuctap/blob/master/ThaoNV/Tim%20hieu%20Linux/firewall/iptables-theory.md
