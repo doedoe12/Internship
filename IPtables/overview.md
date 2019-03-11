@@ -98,46 +98,33 @@ Sự khác nhau chủ yếu giữa Firewalld và IPtables là:
 
 - Với IPtables, mọi thay đổi đồng nghĩa với việc xoá bỏ toàn bộ các rule cũ và đọc lại tất cả các rule mới từ file `/etc/sysconfig/iptables`. Trong khi đó với Firewalld, không có việc khởi tạo lại toàn bộ các rule, chỉ có các sự thay đổi được áp dụng. Vì thế, Firewalld có thể thay đổi cấu hình trong khi đang chạy mà không làm mất các kết nối hiện tại.
 
-## Các option và command cơ bản 
+## State Machine
 
-### Options
+Về bản chất, có thể coi iptables là một stateful packets filtering firewall. Nó có cơ chế giám sát các kết nối đi qua.
 
-#### Các options để chỉ định thông số
+Với iptables, có 4 trạng thái của các kết nối đó là: NEW, ESTABLISHED, RELATED và INVALID.
 
-| Option | Description |
-|--------|-------------|
-| -t | Chỉ định tên table (nếu không chỉ định table, giá trị mặc định là filter table) |
-| -p | Chỉ định loại giao thức |
-| -i | Chỉ định card mạng vào |
-| -o | Chỉ định card mạng ra |
-| -s | Chỉ định địa chỉ IP nguồn |
-| -d | Chỉ định địa chỉ IP đích |
-| --sport | Chỉ định cổng nguồn |
-| --dport | Chỉ định cổng đích |
+IPtables sử dụng một framework trong kernel có tên gọi là conntrack, nó có thể được load như một module hoặc cũng có thể là một phần của kernel. Tất cả các giám sát kết nối đều được thực hiện ở chain PREROUTING, trừ những packet từ local đi ra thì được kiểm soát bởi chain OUTPUT. Ví dụ ta có 1 gói tin gửi đi, nó sẽ có trạng thái NEW ở chain OUTPUT, khi nó được phản hồi về, trạng thái của nó ở chain PREROUTING sẽ là ESTABLISHED.
 
-#### Các option để thao tác với chain 
+### The conntrack entries
 
-| Option | Description |
-|--------|-------------|
-| -N | Tạo chain mới |
-| -X | Xoá hết các rule đã tạo trong chain |
-| -P | Đặt chính sách cho các chain built-in (INPUT, OUTPUT, FORWARD) |
-| -L | Liệt kê các rule có trong chain |
-| -F | Xoá các rule có trong chain |
-| -Z | Reset bộ đếm packet về 0 |
+File `/proc/net/nf_conntrack` chứa toàn bộ những entries trong conntrack database.
 
-#### Các option để thao tác với rule 
+`ipv4     2 tcp      6 431977 ESTABLISHED src=192.168.100.21 dst=192.168.100.32 sport=51233 dport=22 src=192.168.100.32 dst=192.168.100.21 sport=22 dport=51233 [ASSURED] mark=0 secctx=system_u:object_r:unlabeled_t:s0 zone=0 use=2`
 
-| Option | Description |
-|--------|-------------|
-| -A | Thêm rule |
-| -D | Xoá rule |
-| -R | Thay thế rule |
-| -I | Chèn thêm rule |
+Ví dụ trên cho ta biết conntrack module quản lý các connection cụ thể như thế nào. Đầu tiên ta có giao thức, ở đây là tcp. Tiếp theo, cùng giá trị nhưng ở dạng decimal coding. Sau đó là khoảng thời gian mà conntrack entry này có thể tồn tại. Sau đó chính là trạng thái, ở đây là ESTABLISHED. Tiếp đó ta thấy source cùng với destination IP, port kèm theo những gì chúng ta mong đợi của packet trả về (thông số được đảo ngược lại)
 
-### Một số command cơ bản 
+[ASSURED] cho ta biết rằng entry này sẽ được bảm đảm không bị xoá kể cả khi ta đạt đến con số maximum các entries có thể lưu. Con số này phụ thuộc vào số ram bạn có. Mặc định thì 128MB sẽ lưu được khoảng 8192 entries. Bạn có thể xem con số tối đa và sửa nó tại `/proc/sys/net/netfilter/nf_conntrack_max`
 
+### User-land states
 
+| State | Explaination |
+|-------|--------------|
+| NEW | Trạng thái này cho ta biết đó là packet đầu tiên mà conntrack module thấy (những packet có cờ SYN) |
+| ESTABLISHED | Điều kiện để có trạng thái này đơn giản là 1 host gửi packet đi và nhận lại reply từ host khác |
+| RELATED | Kết nối ở trạng thái này khi nó liên quan tới kết nối khác ở trạng thái ESTABLISHED. Đầu tiên ta có 1 kết nối đã ESTABLISHED, sau đó kết nối này tiếp tục tạo ra một kết nối khác ra bên ngoài kết nối chính. Kết nối mới này được coi là RELATED |
+| INVALID | Có nghĩa rằng packet không thể được xác nhận hoặc nó không có bất cứ trạng thái nào, thông thường những packet như này sẽ bị drop |
+| UNTRACKED | Đây là những packet được đánh dấu trong bảng raw với target là NOTRACK. Sau đó nó sẽ được đánh dấu state là UNTRACKED |
 
 ## Tham khảo
 
