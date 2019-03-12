@@ -2,7 +2,7 @@
 
 ### Mô hình
 
-<img src=img/06.jpg">
+<img src="img/06.jpg">
 
 Client có thể ping tới Web Server nhưng không được phép ra internet
 
@@ -82,16 +82,16 @@ sysctl -p
 
 - Ping từ Client tới Web Server
 
-<img src=img/07.jpg">
+<img src="img/07.jpg">
 
 - Ping từ Client ra internet 
 
-<img src=img/08.jpg">
+<img src="img/08.jpg">
 
 - Ping từ Web Server đến Client 
 
-<img src=img/09.jpg">
+<img src="img/09.jpg">
 
 - Ping từ Web Server ra internet 
 
-<img src=img/10.jpg">
+<img src="img/10.jpg">
