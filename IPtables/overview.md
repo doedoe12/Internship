@@ -1,5 +1,23 @@
 # Tổng quan về IPtables
 
+## Netfilter
+
+Netfilter là một module trong Linux kernel 2.4 trở lên, được sử dụng với mục đích lọc gói, NAT và chỉnh sửa gói tin.
+
+Netfilter cung cấp các hook, tương ứng với các quá trình xử lý một packet trước khi vào các socket
+
+Có 5 hook point:
+
+- `NF_IP_PREROUTING`: Xử lý nguồn của gói tin trước khi định tuyến
+
+- `NF_IP_LOCAL_IN`: Xử lý gói tin được định sẵn cho hệ thống cục bộ
+
+- `NF_IP_FORWARD`: Xử lý chuyển tiếp gói tin nếu gói tin được chuyển tiếp đến một máy chủ khác 
+
+- `NF_IP_LOCAL_OUT`: Xử lý các gói đi ra từ mạng nội bộ
+
+- `NF_IP_POST_ROUTING`: Hook này được kích hoạt bởi bất kỳ lưu lượng gửi đi hoặc chuyển tiếp nào sau khi định tuyến đã diễn ra và ngay trước khi được đưa ra ngoài mạng.
+
 ## IPtables là gì, để làm gì?
 
 IPtables là một ứng dụng tường lửa dựa trên lọc gói rất mạnh, miễn phí và có sẵn trên Linux
