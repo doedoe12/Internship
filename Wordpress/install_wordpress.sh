@@ -18,8 +18,8 @@ yum install -y httpd
 systemctl start httpd
 systemctl enable httpd 
 
-touch /etc/yum.repos.d/MariaDB
-cat > /etc/yum.repos.d/MariaDB <<EOF
+touch /etc/yum.repos.d/MariaDB.repo
+cat > /etc/yum.repos.d/MariaDB.repo <<EOF
 [mariadb]
 name = MariaDB
 baseurl = http://yum.mariadb.org/10.3/centos7-amd64
