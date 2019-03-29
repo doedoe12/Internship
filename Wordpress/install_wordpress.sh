@@ -40,8 +40,6 @@ echo "CREATE USER '$dbuser'@'localhost' IDENTIFIED BY '$dbpass';" | mysql
 echo "GRANT ALL PRIVILEGES ON $dbname.* to '$dbuser'@'localhost';" | mysql
 echo "FLUSH PRIVILEGES;" | mysql
 
-yum install -y rsync
-
 cd ~
 wget http://wordpress.org/latest.tar.gz
 tar xzvf latest.tar.gz
