@@ -1,24 +1,15 @@
-#!/usr/bin/bash
-if [ "$1" = "" ]
-then
-echo "Usage: ./check_log logfile"
-else 
-	logtime=`date -r $1 +%Y%m%d%H%M%S`
-	systime=`date +%Y%m%d%H%M%S`
-	display=`date -r $1`
-	result=$((($systime-$logtime)/100))
-	case $result in
-		[0-44]*)
-		echo "Last log created in $display"
-		exit 0
-		;;
-		[45-59]*)
-		echo "Last log created in $display"
-		exit 1
-		;;
-		[60-9999999999]*)
-		echo "Last log created in $display"
-		exit 2
-		;;
-	esac
+#!/bin/bash
+logtime=`date -r /var/log/secure +%Y%m%d%H%M%S`
+systime=`date +%Y%m%d%H%M%S`
+display=`date -r /var/log/secure`
+result=$(($systime - $logtime))
+
+if [ $result -gt 6000 ]; then
+echo "2 SecureLog - Critical - Last log created at $display"
+exit 2
+elif [ $result -gt 4500 ]; then
+echo "1 SecureLog - Warning - Last log created at $display"
+exit 1
+else echo "0 SecureLog - OK - Last log created at $display" 
+exit 0
 fi
