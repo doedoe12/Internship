@@ -59,6 +59,48 @@ Trên thư mục /var/log/ của Syslog server sẽ xuất hiện thư mục log
 
 ## Cấu hình rsyslog đọc file bất kì rồi đẩy sang Syslog Server
 
+Tắt SELinux:
+
+```
+setenforce 0
+```
+
+Để rsyslog có thể đọc file ngoài, ta cần phải dùng module `imfile` của rsyslog
+
+Tạo một file cấu hình `/etc/rsyslog.d/test.conf` và thêm nội dung sau:
+
+```
+$ModLoad imfile
+$InputFilePollInterval 2
+$InputFileName /tmp/test1.log
+$InputFileTag TEST
+$InputFileStateFile test-log-state
+$InputFileSeverity info
+$InputFileFacility local5
+$InputRunFileMonitor
+
+local5.*	@192.186.30.23:514
+```
+
+Giải thích:
+
+- **$ModLoad**: Load module 
+
+- **$InputFilePollInterval**: Thời gian giữa 2 lần quét file
+
+- **$InputFileName**: Đường dẫn tới file 
+
+- **$InputFileTag**: Tên file sẽ hiển thị tại log server 
+
+- **$InputFileStateFile**: Tạo file trạng thái
+
+- **$InputFileSeverity**: Thiết lập mức độ cảnh báo
+
+- **$InputFileFacility**: Cấu hình nguồn local, rsyslog cho phép tuỳ biến từ local0-7
+
+- **$InputRunFileMonitor**: Monitor file được định nghĩa ở trên
+
+- **local5.* @@IP_SYSLOG_SERVER:514**: Đẩy tất cả các log từ local5 về server port 514
 
 ## Tham khảo
 
