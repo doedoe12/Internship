@@ -1,0 +1,20 @@
+#!/usr/bin/bash
+FILE=/var/log/monitoring.log
+ve=`cat $FILE | grep "ValidationError.FileCount=[0-9]*" | grep -o "[0-9]*" | tail -1`
+vfe=`cat $FILE | grep "ValidationFatalError.FileCount=[0-9]*" | grep -o "[0-9]*" | tail -1`
+vse=`cat $FILE | grep "ValidationSendError.FileCount=[0-9]*" | grep -o "[0-9]*" | tail -1`
+display="ValidationErrorCount = $ve, ValidationFatalErrorCount = $vfe, ValidationSendErrorCount = $vse"
+perf="ErrorCount=$ve|FatalErrorCount=$vfe|SendErrorCount=$vse";
+
+if [ $ve != 0 ] && [ $vfe != 0 ] && [ $vse != 0 ]; then
+statustext=CRITICAL
+status=2
+elif [ $ve != 0 ] || [ $vfe != 0 ] || [ $vse != 0 ]; then
+statustext=WARNING
+status=1
+else
+statustext=OK
+status=0
+fi
+
+echo "$status check_count_$FILE $perf $display"
