@@ -1,0 +1,71 @@
+#!/bin/bash
+
+###
+#
+# Check VMs on all projects
+# Author: HoangDH - daohuyhoang87@gmail.com
+# Release: 7-Sep-2017 - 15:45PM
+# Check_MK Only
+###
+mkdir -p /etc/check_mk/plugins/
+source /root/keystonerc_admin
+
+## Get all VMs are running
+openstack server list --all-projects > /tmp/instance_list.h2
+
+## Count total VMs 
+vms_total=$(cat /tmp/instance_list.h2 | awk  '{ print $3 }' FS="|" | grep -Ev "^ Name|^$"  | wc -l)
+
+## Count VMs running
+vms_run=$(cat /tmp/instance_list.h2 | grep -w "ACTIVE" | awk  '{ print $3 }' FS="|" | wc -l)
+
+## Get COM nodes
+COMS=$(openstack host list | grep -w "compute" | awk {'print $2'} FS="|" | cut -d " " -f 2 | sort -u)
+
+# Delete all file check_vm
+rm -rf /etc/check_mk/plugins/check_vm-*
+
+for COM in $COMS
+do
+	
+	instances=$(openstack server list --host $COM --all-projects | awk  '{ print $2 }' FS="|" | egrep -v "^$|^ ID" | cut -d " " -f 2)
+	for instance in $instances
+	do
+		
+		STATUS=$(cat /tmp/instance_list.h2 | grep -w $instance | awk {'print $4'} FS="|" | cut -d " " -f 2)
+		NAME=$(cat /tmp/instance_list.h2 | grep -w $instance | awk {'print $3'} FS="|" | cut -d " " -f 2)
+		if [ ! "$STATUS" = "ACTIVE" ]
+		then
+			CODE=2
+			IPS=$(cat /tmp/instance_list.h2 | grep -w $instance |  awk {'print $5'} FS="|" | grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b")
+			echo -e "echo \"$NAME; IP: $(echo $IPS | tr ' ' ';') $STATUS\"\nexit $CODE" > /etc/check_mk/plugins/check_vm-$NAME
+			chmod +x /etc/check_mk/plugins/check_vm-$NAME	
+		fi
+
+	done
+done
+
+#### Configure MRPE
+
+# List all file configure check_vms
+list_vms=`ls /etc/check_mk/plugins/ | grep -w "check_vm-*" | awk {'print $2'} FS="-"`
+
+# Delete all configure in mrpe.cfg file
+sed -i '/check_vm-/d' /etc/check_mk/mrpe.cfg
+
+# Write configure to mrpe.cfg file
+
+for vm in $list_vms
+do
+	echo -e "\n$COM /etc/check_mk/plugins/check_vm-$vm" >> /etc/check_mk/mrpe.cfg
+done
+
+# Remove all empty line in mrpe.cfg
+
+sed -i '/^\s*$/d' /etc/check_mk/mrpe.cfg
+
+# Remove temp. files
+rm -rf /tmp/instance_list.h2
+
+echo "Server Running: $vms_run; Server non-running: $(expr $vms_total - $vms_run)/$vms_total"
+exit 0
